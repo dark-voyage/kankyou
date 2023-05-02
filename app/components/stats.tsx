@@ -7,8 +7,8 @@ export const revalidate = 60;
 export const Stats = asyncComponent(async () => {
   const [reads, writes] = await redis
     .pipeline()
-    .get("envshare:metrics:reads")
-    .get("envshare:metrics:writes")
+    .get("kankyou:metrics:reads")
+    .get("kankyou:metrics:writes")
     .exec<[number, number]>();
   const stars = await fetch("https://api.github.com/repos/katsuki-yuri/kankyou")
     .then((res) => res.json())

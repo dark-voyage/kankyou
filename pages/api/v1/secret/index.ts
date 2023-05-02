@@ -48,8 +48,8 @@ export default async function handler(req: NextRequest): Promise<NextResponse> {
     }
 
     const parsed = requestValidation.safeParse({
-      ttl: req.headers.get("envshare-ttl"),
-      reads: req.headers.get("envshare-reads"),
+      ttl: req.headers.get("kankyou-ttl"),
+      reads: req.headers.get("kankyou-reads"),
       secret: await req.text(),
     });
     if (!parsed.success) {
@@ -58,7 +58,7 @@ export default async function handler(req: NextRequest): Promise<NextResponse> {
     const { ttl, reads, secret } = parsed.data;
 
     const id = generateId();
-    const rediskey = ["envshare", id].join(":");
+    const rediskey = ["kankyou", id].join(":");
 
     const tx = redis.multi();
 
@@ -66,7 +66,7 @@ export default async function handler(req: NextRequest): Promise<NextResponse> {
       remainingReads: reads ?? null,
       secret,
     });
-    tx.incr("envshare:metrics:writes");
+    tx.incr("kankyou:metrics:writes");
     if (ttl > 0) {
       tx.expire(rediskey, ttl);
     }

@@ -16,7 +16,7 @@ export default function Head({ title, subtitle }: { title: string; subtitle: str
       <meta name="description" content={subtitle} />
       <meta name="theme-color" content="#000000" />
       <meta name="title" content={title} />
-      <meta name="keywords" content="envshare, secure, secrets, share, environment, variables" />
+      <meta name="keywords" content="kankyou, secure, secrets, share, environment, variables" />
       <meta name="language" content="English" />
       <meta name="revisit-after" content="7 days" />
       <meta name="robots" content="all" />
