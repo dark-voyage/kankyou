@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { z } from "zod";
+import redisConfig from "../../../../pkg/config"
 
 const responseValidation = z.union([
   z.object({
@@ -14,7 +15,7 @@ const responseValidation = z.union([
   }),
 ]);
 
-const redis = Redis.fromEnv();
+const redis = new Redis(redisConfig);
 export default async function handler(req: NextRequest): Promise<NextResponse> {
   try {
     if (req.method !== "GET") {

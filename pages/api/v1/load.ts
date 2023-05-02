@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
+import redisConfig from "../../../pkg/config";
 
-const redis = Redis.fromEnv();
+const redis = new Redis(redisConfig);
 export default async function handler(req: NextRequest) {
   const url = new URL(req.url);
   const id = url.searchParams.get("id");

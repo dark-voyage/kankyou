@@ -1,6 +1,7 @@
 import { Redis } from "@upstash/redis";
+import redisConfig from "../../pkg/config";
 
-const redis = Redis.fromEnv();
+const redis = new Redis(redisConfig);
 export const revalidate = 60;
 
 export const Stats = asyncComponent(async () => {

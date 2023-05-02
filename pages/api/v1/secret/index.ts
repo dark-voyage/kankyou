@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { generateId } from "pkg/id";
 import { z } from "zod";
+import redisConfig from "../../../../pkg/config";
 
 export const requestValidation = z.object({
   // ttl in seconds
@@ -38,7 +39,7 @@ export const responseValidation = z.union([
   }),
 ]);
 
-const redis = Redis.fromEnv();
+const redis = new Redis(redisConfig);
 
 export default async function handler(req: NextRequest): Promise<NextResponse> {
   try {

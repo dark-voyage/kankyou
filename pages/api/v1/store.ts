@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 import { generateId } from "pkg/id";
+import redisConfig from "../../../pkg/config";
 
 type Request = {
   encrypted: string;
@@ -9,7 +10,7 @@ type Request = {
   iv: string;
 };
 
-const redis = Redis.fromEnv();
+const redis = new Redis(redisConfig);
 export default async function handler(req: NextRequest) {
   const { encrypted, ttl, reads, iv } = (await req.json()) as Request;
 
