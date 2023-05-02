@@ -10,7 +10,7 @@ import { LATEST_KEY_VERSION } from "pkg/constants";
 
 export default function Home() {
   const [text, setText] = useState("");
-  const [reads, setReads] = useState(999);
+  const [reads, setReads] = useState(5);
 
   const [ttl, setTtl] = useState(7);
   const [ttlMultiplier, setTtlMultiplier] = useState(60 * 60 * 24);

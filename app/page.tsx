@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Stats } from "./components/stats";
-import { Testimonials } from "./components/testimony";
 
 export default function Home() {
   return (
@@ -44,7 +43,6 @@ export default function Home() {
       </div>
       <h2 className="py-4 text-3xl font-bold text-center text-zinc-300 ">Used and trusted by a growing community</h2>
       <Stats />
-      <Testimonials />
     </div>
   );
 }
